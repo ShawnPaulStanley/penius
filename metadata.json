@@ -1,0 +1,8 @@
+{
+  "name": "peniusfootball",
+  "description": "Divide football players into two balanced teams based on preferred positions and formations with pitch view and sharing options.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
