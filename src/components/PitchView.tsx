@@ -288,7 +288,7 @@ export const PitchView: React.FC<PitchViewProps> = ({
                   </div>
 
                   {/* Player Name Pill */}
-                  <div className="mt-1 px-2 py-0.5 bg-black text-white font-mono font-bold text-[10px] sm:text-xs tracking-tight truncate max-w-[95px] border border-black neo-shadow-sm uppercase">
+                  <div className="mt-1 px-2 py-0.5 bg-black text-white font-mono font-bold text-[10px] sm:text-xs tracking-tight whitespace-nowrap border border-black neo-shadow-sm uppercase text-center max-w-none">
                     {ap.player.name}
                   </div>
                 </div>
@@ -346,7 +346,7 @@ export const PitchView: React.FC<PitchViewProps> = ({
                   </div>
 
                   {/* Player Name Pill */}
-                  <div className="mt-1 px-2 py-0.5 bg-black text-white font-mono font-bold text-[10px] sm:text-xs tracking-tight truncate max-w-[95px] border border-black neo-shadow-sm uppercase">
+                  <div className="mt-1 px-2 py-0.5 bg-black text-white font-mono font-bold text-[10px] sm:text-xs tracking-tight whitespace-nowrap border border-black neo-shadow-sm uppercase text-center max-w-none">
                     {ap.player.name}
                   </div>
                 </div>
