@@ -75,7 +75,30 @@ export const PitchView: React.FC<PitchViewProps> = ({
     if (!pitchRef.current) return;
     try {
       setExporting(true);
-      const dataUrl = await toPng(pitchRef.current, { cacheBust: true, quality: 0.95 });
+      const node = pitchRef.current;
+      const width = node.offsetWidth;
+      const height = node.offsetHeight;
+
+      const exportOptions = {
+        cacheBust: true,
+        quality: 0.95,
+        pixelRatio: 2,
+        width,
+        height,
+        style: {
+          margin: '0',
+          transform: 'none',
+          left: '0',
+          right: '0',
+          top: '0',
+          bottom: '0',
+        },
+      };
+
+      // Warmup pass + final render to prevent webfont/offset shifts
+      await toPng(node, exportOptions);
+      const dataUrl = await toPng(node, exportOptions);
+
       const link = document.createElement('a');
       link.download = `Football_Teams_${formation.name}_${Date.now()}.png`;
       link.href = dataUrl;
@@ -217,7 +240,7 @@ export const PitchView: React.FC<PitchViewProps> = ({
         <div className="absolute inset-0 bg-[linear-gradient(to_bottom,rgba(0,168,89,1)_50%,rgba(0,140,74,1)_50%)] bg-[length:100%_40px] pointer-events-none" />
 
         {/* Outer Pitch Border & Lines */}
-        <div className="relative min-h-[640px] sm:min-h-[720px] border-4 border-white p-2 flex flex-col justify-between overflow-hidden">
+        <div className="relative min-h-[640px] sm:min-h-[720px] border-4 border-white p-2 flex flex-col justify-between">
           {/* Halfway Line */}
           <div className="absolute top-1/2 left-0 right-0 h-1 bg-white -translate-y-1/2 pointer-events-none" />
 
