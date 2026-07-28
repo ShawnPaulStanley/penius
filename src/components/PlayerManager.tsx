@@ -95,7 +95,6 @@ export const PlayerManager: React.FC<PlayerManagerProps> = ({
             className="flex items-center gap-2 px-3.5 py-2 bg-[#00F0FF] hover:bg-[#CCFF00] text-black font-black text-xs border-2 border-black neo-shadow-sm transition-all cursor-pointer uppercase"
             title="Load or Reset to Custom Squad"
           >
-            <Sparkles className="w-4 h-4 fill-black" />
             <span>LOAD SQUAD</span>
           </button>
 
@@ -154,62 +153,7 @@ export const PlayerManager: React.FC<PlayerManagerProps> = ({
         </div>
       )}
 
-      {/* Attendance Control & Slider Panel */}
-      {players.length > 0 && (
-        <div className="bg-white p-5 border-4 border-black neo-shadow space-y-4 text-black">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <div className="flex items-center gap-3">
-              <div className="p-2.5 bg-[#00F0FF] text-black border-2 border-black neo-shadow-sm">
-                <Sliders className="w-5 h-5 stroke-[2.5]" />
-              </div>
-              <div>
-                <div className="flex items-center gap-2">
-                  <h2 className="text-lg font-black uppercase text-black">WHO IS PLAYING TODAY?</h2>
-                  <span className="px-2.5 py-0.5 bg-[#CCFF00] text-black border-2 border-black text-xs font-mono font-black">
-                    {attendingCount} / {players.length} PLAYING
-                  </span>
-                </div>
-                <p className="text-xs font-semibold text-zinc-600">
-                  Slide or click player cards to toggle attendance for match generator
-                </p>
-              </div>
-            </div>
 
-            {/* Quick Presets */}
-            <div className="flex items-center gap-2 flex-wrap">
-              <button
-                onClick={() => onToggleAllAttendance(true)}
-                className="px-3 py-1.5 bg-[#CCFF00] text-black font-black text-xs border-2 border-black neo-shadow-sm hover:bg-[#00F0FF] cursor-pointer uppercase"
-              >
-                ALL PRESENT ({players.length})
-              </button>
-              <button
-                onClick={() => onToggleAllAttendance(false)}
-                className="px-3 py-1.5 bg-zinc-200 text-black font-black text-xs border-2 border-black hover:bg-zinc-300 cursor-pointer uppercase"
-              >
-                CLEAR ALL
-              </button>
-            </div>
-          </div>
-
-          {/* Range Slider */}
-          <div className="space-y-1 pt-1">
-            <input
-              type="range"
-              min={0}
-              max={players.length}
-              value={attendingCount}
-              onChange={(e) => onSetAttendanceCount(parseInt(e.target.value, 10))}
-              className="w-full accent-black h-3 bg-zinc-200 border-2 border-black cursor-pointer"
-            />
-            <div className="flex justify-between text-[11px] font-mono font-black text-black">
-              <span>0 PLAYERS</span>
-              <span>{Math.floor(players.length / 2)} HALF SQUAD</span>
-              <span>{players.length} FULL SQUAD</span>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* Search Bar & Category & Attendance Tabs */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">

@@ -17,7 +17,6 @@ import {
   Copy,
   Check,
   Shirt,
-  Sparkles,
   ArrowUpDown,
   RefreshCw,
   Share2,
@@ -253,6 +252,7 @@ export const PitchView: React.FC<PitchViewProps> = ({
               const isSelected =
                 selectedPlayerForSwap?.teamId === 'teamB' &&
                 selectedPlayerForSwap?.playerId === ap.player.id;
+              const zIndexValue = isSelected ? 60 : Math.round(100 - slot.y);
 
               return (
                 <div
@@ -261,9 +261,10 @@ export const PitchView: React.FC<PitchViewProps> = ({
                   style={{
                     left: `${slot.x}%`,
                     top: `${topY}%`,
+                    zIndex: zIndexValue,
                   }}
                   className={`absolute -translate-x-1/2 -translate-y-1/2 flex flex-col items-center cursor-pointer transition-transform ${
-                    isSelected ? 'scale-125 z-30' : 'hover:scale-110 z-20'
+                    isSelected ? 'scale-125' : 'hover:scale-110'
                   }`}
                 >
                   {/* Token */}
@@ -311,6 +312,7 @@ export const PitchView: React.FC<PitchViewProps> = ({
               const isSelected =
                 selectedPlayerForSwap?.teamId === 'teamA' &&
                 selectedPlayerForSwap?.playerId === ap.player.id;
+              const zIndexValue = isSelected ? 60 : Math.round(slot.y);
 
               return (
                 <div
@@ -319,9 +321,10 @@ export const PitchView: React.FC<PitchViewProps> = ({
                   style={{
                     left: `${slot.x}%`,
                     bottom: `${slot.y}%`,
+                    zIndex: zIndexValue,
                   }}
                   className={`absolute -translate-x-1/2 translate-y-1/2 flex flex-col items-center cursor-pointer transition-transform ${
-                    isSelected ? 'scale-125 z-30' : 'hover:scale-110 z-20'
+                    isSelected ? 'scale-125' : 'hover:scale-110'
                   }`}
                 >
                   {/* Token */}

@@ -2,13 +2,9 @@ import React from 'react';
 import { ActiveTab, DivisionResult } from '../types';
 import {
   Users,
-  Grid3X3,
-  Sparkles,
+  LayoutGrid,
   Shirt,
-  Keyboard,
   Trophy,
-  Share2,
-  Shield,
 } from 'lucide-react';
 
 interface HeaderProps {
@@ -18,7 +14,7 @@ interface HeaderProps {
   hasResult: boolean;
   divisionResult?: DivisionResult | null;
   onGenerate: () => void;
-  onOpenShortcuts: () => void;
+  onOpenShortcuts?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -28,13 +24,12 @@ export const Header: React.FC<HeaderProps> = ({
   hasResult,
   divisionResult,
   onGenerate,
-  onOpenShortcuts,
 }) => {
   const tabs: { id: ActiveTab; label: string; icon: React.ReactNode; badge?: number }[] = [
     { id: 'home', label: 'HOME', icon: <Trophy className="w-4 h-4" /> },
     { id: 'players', label: 'PLAYERS', icon: <Users className="w-4 h-4" />, badge: playerCount },
     { id: 'teams', label: 'TEAMS', icon: <Shirt className="w-4 h-4" /> },
-    { id: 'pitch', label: 'PITCH VIEW', icon: <Share2 className="w-4 h-4" /> },
+    { id: 'pitch', label: 'PITCH VIEW', icon: <LayoutGrid className="w-4 h-4" /> },
   ];
 
   return (
@@ -45,16 +40,11 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Logo */}
           <div
             onClick={() => setActiveTab('home')}
-            className="flex items-center gap-3 cursor-pointer group"
+            className="flex items-center cursor-pointer group select-none"
           >
-            <div className="w-10 h-10 bg-[#CCFF00] text-black border-2 border-black neo-shadow flex items-center justify-center font-black group-hover:bg-[#00FF66] transition-colors">
-              <Shield className="w-6 h-6 stroke-[2.5]" />
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="font-black text-2xl tracking-wide text-white uppercase">
-                GAY<span className="text-[#CCFF00]">NIUS</span>
-              </span>
-            </div>
+            <span className="font-black text-2xl sm:text-3xl tracking-wider text-white uppercase group-hover:text-[#CCFF00] transition-colors">
+              GAY<span className="text-[#CCFF00] group-hover:text-white transition-colors">NIUS</span>
+            </span>
           </div>
 
           {/* Desktop Navigation Tabs */}
@@ -90,15 +80,6 @@ export const Header: React.FC<HeaderProps> = ({
           {/* Right Header Actions */}
           <div className="flex items-center gap-2 sm:gap-3">
             <button
-              onClick={onOpenShortcuts}
-              title="Keyboard Shortcuts"
-              className="p-2 bg-white hover:bg-[#00FF66] text-black border-2 border-black neo-shadow-sm transition-colors hidden sm:flex items-center gap-1.5 text-xs font-bold"
-            >
-              <Keyboard className="w-4 h-4" />
-              <span className="text-[11px] font-mono">⌘K</span>
-            </button>
-
-            <button
               onClick={onGenerate}
               disabled={playerCount < 2}
               className={`flex items-center gap-2 px-4 py-2 font-black text-xs uppercase tracking-wider neo-btn cursor-pointer ${
@@ -107,7 +88,6 @@ export const Header: React.FC<HeaderProps> = ({
                   : 'bg-zinc-400 text-zinc-700 cursor-not-allowed opacity-60'
               }`}
             >
-              <Sparkles className="w-4 h-4" />
               <span>MATCH UP</span>
             </button>
           </div>
