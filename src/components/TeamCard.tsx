@@ -1,7 +1,7 @@
 import React from 'react';
 import { DividedTeam, DivisionResult } from '../types';
 import { POSITIONS, getCategoryBadgeClass } from '../data/positions';
-import { Crown, Shirt, Copy, Check, UserCheck } from 'lucide-react';
+import { Shirt, Copy, Check, UserCheck } from 'lucide-react';
 
 interface TeamCardProps {
   team: DividedTeam;
@@ -15,7 +15,7 @@ export const TeamCard: React.FC<TeamCardProps> = ({
   onSwapCaptain,
 }) => {
   const isTeamA = team.id === 'teamA';
-  const headerBg = isTeamA ? 'bg-[#CCFF00]' : 'bg-[#00F0FF]';
+  const headerBg = isTeamA ? 'bg-[#00F0FF]' : 'bg-[#00FF66]';
 
   return (
     <div className="bg-white border-4 border-black neo-shadow text-black font-['Space_Grotesk',sans-serif]">
@@ -55,26 +55,9 @@ export const TeamCard: React.FC<TeamCardProps> = ({
                   <div>
                     <div className="flex items-center gap-2">
                       <span className="font-black text-sm text-black uppercase">{ap.player.name}</span>
-                      {ap.isCaptain && (
-                        <span className="flex items-center gap-1 px-2 py-0.5 bg-[#FFBD2E] text-black font-black text-[10px] border border-black uppercase">
-                          <Crown className="w-3 h-3 stroke-[2.5]" /> CAPTAIN
-                        </span>
-                      )}
                     </div>
                   </div>
                 </div>
-
-                <button
-                  onClick={() => onSwapCaptain(team.id, ap.player.id)}
-                  title="Make Captain"
-                  className={`p-1.5 border-2 border-black transition-all cursor-pointer ${
-                    ap.isCaptain
-                      ? 'bg-[#FFBD2E] text-black neo-shadow-sm'
-                      : 'bg-zinc-100 text-black hover:bg-[#00F0FF]'
-                  }`}
-                >
-                  <Crown className="w-4 h-4 stroke-[2.5]" />
-                </button>
               </div>
             );
           })}

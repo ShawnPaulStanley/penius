@@ -7,7 +7,7 @@ export function formatTeamsForWhatsApp(result: DivisionResult): string {
 
   const { teamA, teamB, formation } = result;
 
-  let text = `*MATCH DAY SQUADS*\n`;
+  let text = `*GAYNIUS MATCH SQUADS*\n`;
   text += `Formation: *${formation.name}* (${formation.category})\n`;
   text += `---------------------------------\n\n`;
 
@@ -50,7 +50,7 @@ export function formatTeamsForWhatsApp(result: DivisionResult): string {
   }
 
   text += `\n---------------------------------\n`;
-  text += `Generated with Match Day Team Divider`;
+  text += `Generated with Gaynius`;
 
   return text;
 }

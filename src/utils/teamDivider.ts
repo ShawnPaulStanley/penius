@@ -155,18 +155,18 @@ export function generateBalancedTeams(
     return {
       teamA: {
         id: 'teamA',
-        name: 'Team Red',
-        color: '#ef4444',
-        secondaryColor: '#991b1b',
+        name: 'Team Blue',
+        color: '#00F0FF',
+        secondaryColor: '#0088CC',
         captainId: null,
         assignedPlayers: [],
         benchPlayers: [],
       },
       teamB: {
         id: 'teamB',
-        name: 'Team Blue',
-        color: '#3b82f6',
-        secondaryColor: '#1e40af',
+        name: 'Team Green',
+        color: '#00FF66',
+        secondaryColor: '#009933',
         captainId: null,
         assignedPlayers: [],
         benchPlayers: [],
@@ -247,9 +247,9 @@ export function generateBalancedTeams(
 
   const teamA: DividedTeam = {
     id: 'teamA',
-    name: 'Team Red',
-    color: '#ef4444',
-    secondaryColor: '#991b1b',
+    name: 'Team Blue',
+    color: '#00F0FF',
+    secondaryColor: '#0088CC',
     captainId: captainAId,
     assignedPlayers: finalAssignedA,
     benchPlayers: [],
@@ -257,9 +257,9 @@ export function generateBalancedTeams(
 
   const teamB: DividedTeam = {
     id: 'teamB',
-    name: 'Team Blue',
-    color: '#3b82f6',
-    secondaryColor: '#1e40af',
+    name: 'Team Green',
+    color: '#00FF66',
+    secondaryColor: '#009933',
     captainId: captainBId,
     assignedPlayers: finalAssignedB,
     benchPlayers: [],

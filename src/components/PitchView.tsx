@@ -16,7 +16,6 @@ import {
   Download,
   Copy,
   Check,
-  Crown,
   Shirt,
   Sparkles,
   ArrowUpDown,
@@ -172,15 +171,6 @@ export const PitchView: React.FC<PitchViewProps> = ({
           </button>
 
           <button
-            onClick={onShuffle}
-            className="flex items-center gap-1.5 px-3 py-2 bg-white hover:bg-[#CCFF00] text-black font-black text-xs border-2 border-black neo-shadow-sm transition-all cursor-pointer uppercase"
-            title="Swap Captains"
-          >
-            <Crown className="w-3.5 h-3.5 stroke-[2.5]" />
-            <span>CAPTAINS</span>
-          </button>
-
-          <button
             onClick={handleCopyWhatsApp}
             className="flex items-center gap-2 px-3.5 py-2 bg-[#CCFF00] hover:bg-[#00F0FF] text-black font-black text-xs border-2 border-black neo-btn transition-all cursor-pointer uppercase"
           >
@@ -249,10 +239,9 @@ export const PitchView: React.FC<PitchViewProps> = ({
 
           {/* --- TOP HALF: TEAM B (Attacking Downward) --- */}
           <div className="relative z-10 w-full h-[300px] sm:h-[340px] mb-4">
-            <div className="absolute top-2 left-4 flex items-center gap-2 bg-[#00F0FF] text-black px-3 py-1 border-2 border-black font-black text-xs uppercase neo-shadow-sm">
+            <div className="absolute top-2 left-4 flex items-center gap-2 bg-[#00FF66] text-black px-3 py-1 border-2 border-black font-black text-xs uppercase neo-shadow-sm">
               <Trophy className="w-3.5 h-3.5 stroke-[2.5]" />
               <span>{teamB.name}</span>
-              {teamB.captainId && <Crown className="w-3.5 h-3.5 text-black stroke-[2.5]" />}
             </div>
 
             {teamB.assignedPlayers.map((ap) => {
@@ -282,7 +271,7 @@ export const PitchView: React.FC<PitchViewProps> = ({
                     className={`relative w-11 h-11 sm:w-13 sm:h-13 border-3 border-black flex items-center justify-center font-black text-xs text-black neo-shadow-sm transition-all ${
                       isSelected
                         ? 'bg-[#FFBD2E] border-black ring-4 ring-black'
-                        : 'bg-[#00F0FF]'
+                        : 'bg-[#00FF66]'
                     }`}
                   >
                     <span>{ap.assignedPosition}</span>
@@ -309,10 +298,9 @@ export const PitchView: React.FC<PitchViewProps> = ({
 
           {/* --- BOTTOM HALF: TEAM A (Attacking Upward) --- */}
           <div className="relative z-10 w-full h-[300px] sm:h-[340px] mt-4">
-            <div className="absolute bottom-2 left-4 flex items-center gap-2 bg-[#CCFF00] text-black px-3 py-1 border-2 border-black font-black text-xs uppercase neo-shadow-sm">
+            <div className="absolute bottom-2 left-4 flex items-center gap-2 bg-[#00F0FF] text-black px-3 py-1 border-2 border-black font-black text-xs uppercase neo-shadow-sm">
               <Trophy className="w-3.5 h-3.5 stroke-[2.5]" />
               <span>{teamA.name}</span>
-              {teamA.captainId && <Crown className="w-3.5 h-3.5 text-black stroke-[2.5]" />}
             </div>
 
             {teamA.assignedPlayers.map((ap) => {
@@ -341,7 +329,7 @@ export const PitchView: React.FC<PitchViewProps> = ({
                     className={`relative w-11 h-11 sm:w-13 sm:h-13 border-3 border-black flex items-center justify-center font-black text-xs text-black neo-shadow-sm transition-all ${
                       isSelected
                         ? 'bg-[#FFBD2E] border-black ring-4 ring-black'
-                        : 'bg-[#CCFF00]'
+                        : 'bg-[#00F0FF]'
                     }`}
                   >
                     <span>{ap.assignedPosition}</span>

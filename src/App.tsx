@@ -25,7 +25,6 @@ import { HomeTab } from './components/HomeTab';
 import { PlayerManager } from './components/PlayerManager';
 import { PlayerModal } from './components/PlayerModal';
 import { BulkImportModal } from './components/BulkImportModal';
-import { FormationSelector } from './components/FormationSelector';
 import { PitchView } from './components/PitchView';
 import { TeamCard } from './components/TeamCard';
 import { ShareModal } from './components/ShareModal';
@@ -251,6 +250,7 @@ export default function App() {
         setActiveTab={setActiveTab}
         playerCount={players.length}
         hasResult={Boolean(divisionResult)}
+        divisionResult={divisionResult}
         onGenerate={handleGenerateTeams}
         onOpenShortcuts={() => setIsShortcutsModalOpen(true)}
       />
@@ -292,16 +292,6 @@ export default function App() {
             onToggleAttendance={handleToggleAttendance}
             onSetAttendanceCount={handleSetAttendanceCount}
             onToggleAllAttendance={handleToggleAllAttendance}
-          />
-        )}
-
-        {activeTab === 'formation' && (
-          <FormationSelector
-            selectedFormation={selectedFormation}
-            onSelectFormation={setSelectedFormation}
-            playerCount={players.length}
-            setActiveTab={setActiveTab}
-            onGenerate={handleGenerateTeams}
           />
         )}
 
@@ -348,27 +338,6 @@ export default function App() {
           </div>
         )}
       </main>
-
-      {/* Footer */}
-      <footer className="border-t border-zinc-900 bg-zinc-950 py-6 text-center text-xs text-zinc-400">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <span>⚽ Football Team Divider — Fair & Position-Balanced Lineups</span>
-          <div className="flex items-center gap-4">
-            <button
-              onClick={() => setIsShortcutsModalOpen(true)}
-              className="hover:text-emerald-400 transition-colors"
-            >
-              Shortcuts (⌘K)
-            </button>
-            <button
-              onClick={handleGenerateTeams}
-              className="text-emerald-400 font-bold hover:underline"
-            >
-              Generate Teams
-            </button>
-          </div>
-        </div>
-      </footer>
 
       {/* Modals */}
       <PlayerModal

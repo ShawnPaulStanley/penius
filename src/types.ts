@@ -81,7 +81,7 @@ export interface DivisionResult {
   generatedAt: number;
 }
 
-export type ActiveTab = 'home' | 'players' | 'formation' | 'teams' | 'pitch';
+export type ActiveTab = 'home' | 'players' | 'teams' | 'pitch';
 
 export interface KitStyle {
   primaryColor: string;

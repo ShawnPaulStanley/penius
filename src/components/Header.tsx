@@ -1,5 +1,5 @@
 import React from 'react';
-import { ActiveTab } from '../types';
+import { ActiveTab, DivisionResult } from '../types';
 import {
   Users,
   Grid3X3,
@@ -16,6 +16,7 @@ interface HeaderProps {
   setActiveTab: (tab: ActiveTab) => void;
   playerCount: number;
   hasResult: boolean;
+  divisionResult?: DivisionResult | null;
   onGenerate: () => void;
   onOpenShortcuts: () => void;
 }
@@ -25,19 +26,19 @@ export const Header: React.FC<HeaderProps> = ({
   setActiveTab,
   playerCount,
   hasResult,
+  divisionResult,
   onGenerate,
   onOpenShortcuts,
 }) => {
   const tabs: { id: ActiveTab; label: string; icon: React.ReactNode; badge?: number }[] = [
     { id: 'home', label: 'HOME', icon: <Trophy className="w-4 h-4" /> },
     { id: 'players', label: 'PLAYERS', icon: <Users className="w-4 h-4" />, badge: playerCount },
-    { id: 'formation', label: 'FORMATIONS', icon: <Grid3X3 className="w-4 h-4" /> },
     { id: 'teams', label: 'TEAMS', icon: <Shirt className="w-4 h-4" /> },
     { id: 'pitch', label: 'PITCH VIEW', icon: <Share2 className="w-4 h-4" /> },
   ];
 
   return (
-    <header className="sticky top-0 z-40 w-full bg-black text-white border-b-4 border-black">
+    <header className="sticky top-0 z-40 w-full bg-black text-white border-b-4 border-black font-['Space_Grotesk',sans-serif]">
       {/* Top Main Navigation Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
@@ -46,15 +47,12 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => setActiveTab('home')}
             className="flex items-center gap-3 cursor-pointer group"
           >
-            <div className="w-10 h-10 bg-[#CCFF00] text-black border-2 border-black neo-shadow flex items-center justify-center font-black group-hover:bg-[#00F0FF] transition-colors">
+            <div className="w-10 h-10 bg-[#CCFF00] text-black border-2 border-black neo-shadow flex items-center justify-center font-black group-hover:bg-[#00FF66] transition-colors">
               <Shield className="w-6 h-6 stroke-[2.5]" />
             </div>
             <div className="flex items-center gap-2">
-              <span className="font-extrabold text-xl tracking-tight text-white uppercase">
-                MATCH<span className="text-[#CCFF00]">DAY</span>
-              </span>
-              <span className="text-[10px] font-black tracking-widest uppercase px-2 py-0.5 bg-[#00F0FF] text-black border border-black neo-shadow-sm">
-                WEB3.0
+              <span className="font-black text-2xl tracking-wide text-white uppercase">
+                GAY<span className="text-[#CCFF00]">NIUS</span>
               </span>
             </div>
           </div>
@@ -70,7 +68,7 @@ export const Header: React.FC<HeaderProps> = ({
                   className={`flex items-center gap-2 px-3.5 py-1.5 font-extrabold text-xs tracking-wider border-2 border-black transition-all cursor-pointer ${
                     isActive
                       ? 'bg-[#CCFF00] text-black neo-shadow-sm'
-                      : 'bg-white text-black hover:bg-[#00F0FF]'
+                      : 'bg-white text-black hover:bg-[#00FF66]'
                   }`}
                 >
                   {tab.icon}
@@ -94,7 +92,7 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               onClick={onOpenShortcuts}
               title="Keyboard Shortcuts"
-              className="p-2 bg-white hover:bg-[#00F0FF] text-black border-2 border-black neo-shadow-sm transition-colors hidden sm:flex items-center gap-1.5 text-xs font-bold"
+              className="p-2 bg-white hover:bg-[#00FF66] text-black border-2 border-black neo-shadow-sm transition-colors hidden sm:flex items-center gap-1.5 text-xs font-bold"
             >
               <Keyboard className="w-4 h-4" />
               <span className="text-[11px] font-mono">⌘K</span>
@@ -105,7 +103,7 @@ export const Header: React.FC<HeaderProps> = ({
               disabled={playerCount < 2}
               className={`flex items-center gap-2 px-4 py-2 font-black text-xs uppercase tracking-wider neo-btn cursor-pointer ${
                 playerCount >= 2
-                  ? 'bg-[#CCFF00] text-black hover:bg-[#00F0FF]'
+                  ? 'bg-[#CCFF00] text-black hover:bg-[#00FF66]'
                   : 'bg-zinc-400 text-zinc-700 cursor-not-allowed opacity-60'
               }`}
             >
@@ -113,14 +111,6 @@ export const Header: React.FC<HeaderProps> = ({
               <span>MATCH UP</span>
             </button>
           </div>
-        </div>
-      </div>
-
-      {/* Ticker Banner */}
-      <div className="bg-[#CCFF00] text-black border-t-2 border-b-2 border-black py-1 overflow-hidden font-black text-xs uppercase tracking-widest flex items-center select-none">
-        <div className="animate-marquee whitespace-nowrap flex gap-8">
-          <span>★ LIVE MATCH DAY ★ NO FAIRNESS GUESSWORK ★ 100% BALANCED SQUAD ★ REAL-TIME PITCH ★ WHATSAPP READY ★ POSITION DRIVEN ★</span>
-          <span>★ LIVE MATCH DAY ★ NO FAIRNESS GUESSWORK ★ 100% BALANCED SQUAD ★ REAL-TIME PITCH ★ WHATSAPP READY ★ POSITION DRIVEN ★</span>
         </div>
       </div>
 
