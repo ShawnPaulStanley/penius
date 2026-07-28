@@ -76,57 +76,57 @@ export const PlayerModal: React.FC<PlayerModalProps> = ({
   const categories = ['GK', 'DEF', 'MID', 'ATT'] as const;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn">
-      <div className="relative w-full max-w-lg bg-zinc-900 border border-zinc-800 rounded-3xl shadow-2xl overflow-hidden text-white space-y-0">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 font-['Space_Grotesk',sans-serif]">
+      <div className="relative w-full max-w-lg bg-white border-4 border-black shadow-[8px_8px_0px_0px_#000000] p-0 text-black overflow-hidden">
         {/* Modal Header */}
-        <div className="flex items-center justify-between p-6 border-b border-zinc-800/80 bg-zinc-950/50">
+        <div className="flex items-center justify-between p-5 bg-black text-white border-b-4 border-black">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center border border-emerald-500/20">
-              {editingPlayer ? <Save className="w-5 h-5" /> : <UserPlus className="w-5 h-5" />}
+            <div className="w-10 h-10 bg-[#CCFF00] text-black border-2 border-black flex items-center justify-center">
+              {editingPlayer ? <Save className="w-5 h-5 stroke-[2.5]" /> : <UserPlus className="w-5 h-5 stroke-[2.5]" />}
             </div>
             <div>
-              <h2 className="text-lg font-bold text-white">
-                {editingPlayer ? 'Edit Player Details' : 'Add New Player'}
+              <h2 className="text-lg font-black uppercase text-white tracking-wide">
+                {editingPlayer ? 'EDIT PLAYER DETAILS' : 'ADD NEW PLAYER'}
               </h2>
-              <p className="text-xs text-zinc-400">
-                Specify preferred positions for accurate squad balancing
+              <p className="text-xs font-mono text-[#CCFF00]">
+                TACTICAL POSITION ASSIGNMENT
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-2 rounded-xl text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors"
+            className="p-1.5 bg-[#FF5F56] text-black border-2 border-black hover:bg-red-600 transition-colors cursor-pointer"
           >
-            <X className="w-5 h-5" />
+            <X className="w-5 h-5 stroke-[2.5]" />
           </button>
         </div>
 
         {/* Modal Form */}
-        <form onSubmit={handleSubmit} className="p-6 space-y-5">
+        <form onSubmit={handleSubmit} className="p-6 space-y-5 bg-white">
           {error && (
-            <div className="flex items-center gap-2 p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-300 text-xs font-medium">
-              <AlertCircle className="w-4 h-4 shrink-0 text-red-400" />
+            <div className="flex items-center gap-2 p-3 bg-[#FF5F56] text-black border-2 border-black font-bold text-xs">
+              <AlertCircle className="w-4 h-4 shrink-0 stroke-[2.5]" />
               <span>{error}</span>
             </div>
           )}
 
           <div className="grid grid-cols-3 gap-4">
             <div className="col-span-2 space-y-1.5">
-              <label className="text-xs font-semibold text-zinc-300">
-                Player Name <span className="text-emerald-400">*</span>
+              <label className="text-xs font-black uppercase text-black">
+                PLAYER NAME <span className="text-[#FF5F56]">*</span>
               </label>
               <input
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="e.g. John Miller"
+                placeholder="e.g. JOHN MILLER"
                 autoFocus
-                className="w-full px-4 py-2.5 rounded-xl bg-zinc-800/80 border border-zinc-700 focus:border-emerald-500 focus:outline-none text-white text-sm placeholder-zinc-500 transition-colors"
+                className="w-full px-4 py-2.5 bg-white border-3 border-black text-black text-xs font-bold placeholder-zinc-400 focus:outline-none focus:bg-[#00F0FF]/10"
               />
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-xs font-semibold text-zinc-300">Kit # (Optional)</label>
+              <label className="text-xs font-black uppercase text-black">KIT #</label>
               <input
                 type="number"
                 min="1"
@@ -134,7 +134,7 @@ export const PlayerModal: React.FC<PlayerModalProps> = ({
                 value={kitNumber}
                 onChange={(e) => setKitNumber(e.target.value)}
                 placeholder="7"
-                className="w-full px-4 py-2.5 rounded-xl bg-zinc-800/80 border border-zinc-700 focus:border-emerald-500 focus:outline-none text-white text-sm placeholder-zinc-500 text-center transition-colors"
+                className="w-full px-4 py-2.5 bg-white border-3 border-black text-black text-xs font-bold text-center placeholder-zinc-400 focus:outline-none focus:bg-[#00F0FF]/10"
               />
             </div>
           </div>
@@ -142,11 +142,11 @@ export const PlayerModal: React.FC<PlayerModalProps> = ({
           {/* Preferred Positions Selection */}
           <div className="space-y-3">
             <div className="flex items-center justify-between">
-              <label className="text-xs font-semibold text-zinc-300">
-                Preferred Positions (Multiple allowed)
+              <label className="text-xs font-black uppercase text-black">
+                PREFERRED POSITIONS (MULTIPLE ALLOWED)
               </label>
-              <span className="text-[11px] text-emerald-400 font-medium">
-                {preferredPositions.length} selected
+              <span className="text-xs font-mono font-black bg-[#CCFF00] px-2 py-0.5 border border-black">
+                {preferredPositions.length} SELECTED
               </span>
             </div>
 
@@ -155,7 +155,7 @@ export const PlayerModal: React.FC<PlayerModalProps> = ({
                 const catPositions = POSITIONS.filter((p) => p.category === cat);
                 return (
                   <div key={cat} className="space-y-1.5">
-                    <span className="text-[10px] font-bold tracking-wider text-zinc-400 uppercase">
+                    <span className="text-[10px] font-black uppercase tracking-wider text-black bg-zinc-200 px-2 py-0.5 border border-black inline-block">
                       {catPositions[0]?.categoryLabel}
                     </span>
                     <div className="flex flex-wrap gap-2">
@@ -166,15 +166,15 @@ export const PlayerModal: React.FC<PlayerModalProps> = ({
                             key={pos.key}
                             type="button"
                             onClick={() => togglePosition(pos.key)}
-                            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-medium border transition-all ${
+                            className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-black uppercase border-2 border-black transition-all cursor-pointer ${
                               isSelected
-                                ? 'bg-emerald-600 text-white border-emerald-500 shadow-sm'
-                                : 'bg-zinc-800/60 text-zinc-300 border-zinc-700/60 hover:bg-zinc-800'
+                                ? 'bg-[#00F0FF] text-black neo-shadow-sm'
+                                : 'bg-white text-black hover:bg-zinc-100'
                             }`}
                           >
                             <span className="font-bold">{pos.key}</span>
                             <span className="text-[10px] opacity-80">({pos.label})</span>
-                            {isSelected && <Check className="w-3.5 h-3.5 ml-0.5 text-white" />}
+                            {isSelected && <Check className="w-3.5 h-3.5 ml-0.5 stroke-[2.5]" />}
                           </button>
                         );
                       })}
@@ -186,20 +186,20 @@ export const PlayerModal: React.FC<PlayerModalProps> = ({
           </div>
 
           {/* Modal Footer */}
-          <div className="pt-4 border-t border-zinc-800 flex items-center justify-end gap-3">
+          <div className="pt-4 border-t-3 border-black flex items-center justify-end gap-3">
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs font-medium transition-colors"
+              className="px-4 py-2.5 bg-white hover:bg-zinc-100 text-black border-2 border-black font-black text-xs uppercase cursor-pointer"
             >
-              Cancel
+              CANCEL
             </button>
             <button
               type="submit"
-              className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold shadow-lg shadow-emerald-950 transition-colors"
+              className="flex items-center gap-2 px-5 py-2.5 bg-[#CCFF00] hover:bg-[#00F0FF] text-black font-black text-xs uppercase border-2 border-black neo-btn cursor-pointer"
             >
-              <Check className="w-4 h-4" />
-              <span>{editingPlayer ? 'Update Player' : 'Save Player'}</span>
+              <Check className="w-4 h-4 stroke-[2.5]" />
+              <span>{editingPlayer ? 'UPDATE PLAYER' : 'SAVE PLAYER'}</span>
             </button>
           </div>
         </form>

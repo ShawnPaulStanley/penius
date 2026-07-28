@@ -29,23 +29,16 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenShortcuts,
 }) => {
   const tabs: { id: ActiveTab; label: string; icon: React.ReactNode; badge?: number }[] = [
-    { id: 'home', label: 'Home', icon: <Trophy className="w-4 h-4" /> },
-    { id: 'players', label: 'Players', icon: <Users className="w-4 h-4" />, badge: playerCount },
-    { id: 'formation', label: 'Formations', icon: <Grid3X3 className="w-4 h-4" /> },
-    {
-      id: 'teams',
-      label: 'Teams',
-      icon: <Shirt className="w-4 h-4" />,
-    },
-    {
-      id: 'pitch',
-      label: 'Pitch View',
-      icon: <Share2 className="w-4 h-4" />,
-    },
+    { id: 'home', label: 'HOME', icon: <Trophy className="w-4 h-4" /> },
+    { id: 'players', label: 'PLAYERS', icon: <Users className="w-4 h-4" />, badge: playerCount },
+    { id: 'formation', label: 'FORMATIONS', icon: <Grid3X3 className="w-4 h-4" /> },
+    { id: 'teams', label: 'TEAMS', icon: <Shirt className="w-4 h-4" /> },
+    { id: 'pitch', label: 'PITCH VIEW', icon: <Share2 className="w-4 h-4" /> },
   ];
 
   return (
-    <header className="sticky top-0 z-40 bg-zinc-950/90 backdrop-blur-md border-b border-emerald-900/30 text-white">
+    <header className="sticky top-0 z-40 w-full bg-black text-white border-b-4 border-black">
+      {/* Top Main Navigation Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -53,44 +46,39 @@ export const Header: React.FC<HeaderProps> = ({
             onClick={() => setActiveTab('home')}
             className="flex items-center gap-3 cursor-pointer group"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 via-emerald-500 to-green-400 flex items-center justify-center shadow-lg shadow-emerald-900/50 group-hover:scale-105 transition-transform">
-              <Shield className="w-5 h-5 text-zinc-950 fill-zinc-950" />
+            <div className="w-10 h-10 bg-[#CCFF00] text-black border-2 border-black neo-shadow flex items-center justify-center font-black group-hover:bg-[#00F0FF] transition-colors">
+              <Shield className="w-6 h-6 stroke-[2.5]" />
             </div>
-            <div>
-              <div className="flex items-center gap-2">
-                <span className="font-bold text-lg tracking-tight bg-gradient-to-r from-white via-emerald-100 to-emerald-400 bg-clip-text text-transparent">
-                  Match Day
-                </span>
-                <span className="text-[10px] font-semibold tracking-wide uppercase px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-                  SQUAD
-                </span>
-              </div>
-              <p className="text-xs text-zinc-400 hidden sm:block">
-                Tactical Squad & Lineup Divider
-              </p>
+            <div className="flex items-center gap-2">
+              <span className="font-extrabold text-xl tracking-tight text-white uppercase">
+                MATCH<span className="text-[#CCFF00]">DAY</span>
+              </span>
+              <span className="text-[10px] font-black tracking-widest uppercase px-2 py-0.5 bg-[#00F0FF] text-black border border-black neo-shadow-sm">
+                WEB3.0
+              </span>
             </div>
           </div>
 
           {/* Desktop Navigation Tabs */}
-          <nav className="hidden md:flex items-center gap-1 bg-zinc-900/80 p-1.5 rounded-2xl border border-zinc-800">
+          <nav className="hidden md:flex items-center gap-2">
             {tabs.map((tab) => {
               const isActive = activeTab === tab.id;
               return (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all ${
+                  className={`flex items-center gap-2 px-3.5 py-1.5 font-extrabold text-xs tracking-wider border-2 border-black transition-all cursor-pointer ${
                     isActive
-                      ? 'bg-emerald-600 text-white shadow-md shadow-emerald-950 font-semibold'
-                      : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/60'
+                      ? 'bg-[#CCFF00] text-black neo-shadow-sm'
+                      : 'bg-white text-black hover:bg-[#00F0FF]'
                   }`}
                 >
                   {tab.icon}
                   <span>{tab.label}</span>
                   {tab.badge !== undefined && tab.badge > 0 && (
                     <span
-                      className={`px-1.5 py-0.5 rounded-full text-[10px] font-bold ${
-                        isActive ? 'bg-white/20 text-white' : 'bg-emerald-950 text-emerald-400'
+                      className={`px-1.5 py-0.2 text-[10px] font-black border border-black ${
+                        isActive ? 'bg-black text-white' : 'bg-[#CCFF00] text-black'
                       }`}
                     >
                       {tab.badge}
@@ -106,46 +94,54 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               onClick={onOpenShortcuts}
               title="Keyboard Shortcuts"
-              className="p-2 rounded-xl bg-zinc-900 hover:bg-zinc-800 text-zinc-400 hover:text-zinc-200 border border-zinc-800 transition-colors hidden sm:flex items-center gap-1.5 text-xs"
+              className="p-2 bg-white hover:bg-[#00F0FF] text-black border-2 border-black neo-shadow-sm transition-colors hidden sm:flex items-center gap-1.5 text-xs font-bold"
             >
               <Keyboard className="w-4 h-4" />
-              <span className="text-[11px] text-zinc-400 font-mono">⌘K</span>
+              <span className="text-[11px] font-mono">⌘K</span>
             </button>
 
             <button
               onClick={onGenerate}
               disabled={playerCount < 2}
-              className={`flex items-center gap-2 px-4 py-2 rounded-xl font-medium text-xs shadow-lg transition-all ${
+              className={`flex items-center gap-2 px-4 py-2 font-black text-xs uppercase tracking-wider neo-btn cursor-pointer ${
                 playerCount >= 2
-                  ? 'bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 text-white shadow-emerald-950/80 hover:scale-[1.02] active:scale-[0.98]'
-                  : 'bg-zinc-800 text-zinc-500 cursor-not-allowed border border-zinc-700/50'
+                  ? 'bg-[#CCFF00] text-black hover:bg-[#00F0FF]'
+                  : 'bg-zinc-400 text-zinc-700 cursor-not-allowed opacity-60'
               }`}
             >
-              <Sparkles className="w-4 h-4 animate-pulse" />
-              <span className="font-semibold">Generate Teams</span>
+              <Sparkles className="w-4 h-4" />
+              <span>MATCH UP</span>
             </button>
           </div>
         </div>
       </div>
 
+      {/* Ticker Banner */}
+      <div className="bg-[#CCFF00] text-black border-t-2 border-b-2 border-black py-1 overflow-hidden font-black text-xs uppercase tracking-widest flex items-center select-none">
+        <div className="animate-marquee whitespace-nowrap flex gap-8">
+          <span>★ LIVE MATCH DAY ★ NO FAIRNESS GUESSWORK ★ 100% BALANCED SQUAD ★ REAL-TIME PITCH ★ WHATSAPP READY ★ POSITION DRIVEN ★</span>
+          <span>★ LIVE MATCH DAY ★ NO FAIRNESS GUESSWORK ★ 100% BALANCED SQUAD ★ REAL-TIME PITCH ★ WHATSAPP READY ★ POSITION DRIVEN ★</span>
+        </div>
+      </div>
+
       {/* Mobile Navigation Tabs */}
-      <div className="flex md:hidden overflow-x-auto no-scrollbar border-t border-zinc-800/60 px-2 py-1.5 bg-zinc-950/90 gap-1">
+      <div className="flex md:hidden overflow-x-auto no-scrollbar px-2 py-2 bg-black border-t border-zinc-800 gap-1.5">
         {tabs.map((tab) => {
           const isActive = activeTab === tab.id;
           return (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs whitespace-nowrap font-medium transition-all ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-black uppercase whitespace-nowrap border-2 border-black ${
                 isActive
-                  ? 'bg-emerald-600 text-white shadow-sm'
-                  : 'text-zinc-400 hover:text-zinc-200 bg-zinc-900/60'
+                  ? 'bg-[#CCFF00] text-black neo-shadow-sm'
+                  : 'bg-white text-black'
               }`}
             >
               {tab.icon}
               <span>{tab.label}</span>
               {tab.badge !== undefined && tab.badge > 0 && (
-                <span className="px-1.5 py-0.5 rounded-full text-[10px] bg-white/20 text-white font-bold">
+                <span className="px-1.5 py-0.2 text-[10px] bg-black text-white font-black border border-black">
                   {tab.badge}
                 </span>
               )}
@@ -156,3 +152,4 @@ export const Header: React.FC<HeaderProps> = ({
     </header>
   );
 };
+

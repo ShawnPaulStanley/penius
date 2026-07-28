@@ -72,19 +72,19 @@ export const PlayerManager: React.FC<PlayerManagerProps> = ({
   });
 
   return (
-    <div className="space-y-6 py-4">
+    <div className="space-y-6 py-4 font-['Space_Grotesk',sans-serif]">
       {/* Top Header Bar */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-zinc-900/80 p-6 rounded-3xl border border-zinc-800 shadow-xl">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-white p-6 border-4 border-black neo-shadow text-black">
         <div className="space-y-1">
           <div className="flex items-center gap-2">
-            <Users className="w-5 h-5 text-emerald-400" />
-            <h1 className="text-xl font-extrabold text-white">Player Roster</h1>
-            <span className="px-2.5 py-0.5 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-800/60 text-xs font-bold">
-              {players.length} Total
+            <Users className="w-6 h-6 text-black stroke-[2.5]" />
+            <h1 className="text-2xl font-black uppercase text-black">PLAYER ROSTER</h1>
+            <span className="px-2.5 py-0.5 bg-[#CCFF00] text-black border-2 border-black text-xs font-black">
+              {players.length} TOTAL
             </span>
           </div>
-          <p className="text-xs text-zinc-400">
-            Add and manage football players with their preferred tactical positions.
+          <p className="text-xs font-bold text-zinc-700">
+            Manage your squad roster & set position preferences
           </p>
         </div>
 
@@ -92,36 +92,36 @@ export const PlayerManager: React.FC<PlayerManagerProps> = ({
         <div className="flex flex-wrap items-center gap-2">
           <button
             onClick={() => onLoadSample(0)}
-            className="flex items-center gap-2 px-3.5 py-2.5 rounded-2xl bg-zinc-800 hover:bg-zinc-700 text-emerald-300 font-semibold text-xs border border-emerald-500/30 transition-colors"
-            title="Load or Reset to 18 Custom Squad"
+            className="flex items-center gap-2 px-3.5 py-2 bg-[#00F0FF] hover:bg-[#CCFF00] text-black font-black text-xs border-2 border-black neo-shadow-sm transition-all cursor-pointer uppercase"
+            title="Load or Reset to Custom Squad"
           >
-            <Sparkles className="w-4 h-4 text-emerald-400" />
-            <span>Load Custom Squad</span>
+            <Sparkles className="w-4 h-4 fill-black" />
+            <span>LOAD SQUAD</span>
           </button>
 
           <button
             onClick={onOpenAddModal}
-            className="flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs shadow-lg shadow-emerald-950 transition-all hover:scale-[1.02]"
+            className="flex items-center gap-2 px-4 py-2 bg-[#CCFF00] hover:bg-[#00F0FF] text-black font-black text-xs border-2 border-black neo-btn cursor-pointer uppercase"
           >
-            <UserPlus className="w-4 h-4" />
-            <span>Add Player</span>
+            <UserPlus className="w-4 h-4 stroke-[2.5]" />
+            <span>+ ADD PLAYER</span>
           </button>
 
           <button
             onClick={onOpenBulkModal}
-            className="flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-zinc-800 hover:bg-zinc-700 text-zinc-200 font-medium text-xs border border-zinc-700 transition-colors"
+            className="flex items-center gap-2 px-4 py-2 bg-white hover:bg-zinc-100 text-black font-extrabold text-xs border-2 border-black neo-shadow-sm transition-all cursor-pointer uppercase"
           >
-            <FileText className="w-4 h-4 text-emerald-400" />
-            <span>Bulk Import</span>
+            <FileText className="w-4 h-4 stroke-[2.5]" />
+            <span>BULK IMPORT</span>
           </button>
 
           {players.length > 0 && (
             <button
               onClick={() => setShowClearConfirm(true)}
-              className="p-2.5 rounded-2xl bg-zinc-800/80 hover:bg-red-950 text-zinc-400 hover:text-red-400 border border-zinc-700/60 transition-colors"
+              className="p-2 bg-[#FF5F56] hover:bg-red-600 text-black border-2 border-black neo-shadow-sm transition-all cursor-pointer"
               title="Clear All Players"
             >
-              <Trash2 className="w-4 h-4" />
+              <Trash2 className="w-4 h-4 stroke-[2.5]" />
             </button>
           )}
         </div>
@@ -129,26 +129,26 @@ export const PlayerManager: React.FC<PlayerManagerProps> = ({
 
       {/* Clear Confirmation Modal / Banner */}
       {showClearConfirm && (
-        <div className="flex items-center justify-between p-4 rounded-2xl bg-red-950/60 border border-red-800/60 text-red-200 text-xs animate-fadeIn">
+        <div className="flex items-center justify-between p-4 bg-[#FF5F56] text-black border-3 border-black neo-shadow font-bold text-xs">
           <div className="flex items-center gap-3">
-            <AlertTriangle className="w-5 h-5 text-red-400 shrink-0" />
-            <span>Are you sure you want to remove all {players.length} players from roster?</span>
+            <AlertTriangle className="w-5 h-5 text-black stroke-[2.5] shrink-0" />
+            <span>Remove all {players.length} players from roster?</span>
           </div>
           <div className="flex items-center gap-2 shrink-0">
             <button
               onClick={() => setShowClearConfirm(false)}
-              className="px-3 py-1.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-medium"
+              className="px-3 py-1.5 bg-white text-black font-black border-2 border-black cursor-pointer"
             >
-              Cancel
+              CANCEL
             </button>
             <button
               onClick={() => {
                 onClearAll();
                 setShowClearConfirm(false);
               }}
-              className="px-3 py-1.5 rounded-xl bg-red-600 hover:bg-red-500 text-white font-bold"
+              className="px-3 py-1.5 bg-black text-white font-black border-2 border-black cursor-pointer"
             >
-              Yes, Clear All
+              YES, CLEAR ALL
             </button>
           </div>
         </div>
@@ -156,21 +156,21 @@ export const PlayerManager: React.FC<PlayerManagerProps> = ({
 
       {/* Attendance Control & Slider Panel */}
       {players.length > 0 && (
-        <div className="bg-gradient-to-r from-zinc-900 via-zinc-900/90 to-zinc-950 p-5 rounded-3xl border border-zinc-800/80 shadow-xl space-y-4">
+        <div className="bg-white p-5 border-4 border-black neo-shadow space-y-4 text-black">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="flex items-center gap-3">
-              <div className="p-2.5 rounded-2xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                <Sliders className="w-5 h-5" />
+              <div className="p-2.5 bg-[#00F0FF] text-black border-2 border-black neo-shadow-sm">
+                <Sliders className="w-5 h-5 stroke-[2.5]" />
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <h2 className="text-base font-bold text-white">Who is Playing Today?</h2>
-                  <span className="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-xs font-mono font-bold">
-                    {attendingCount} / {players.length} Playing
+                  <h2 className="text-lg font-black uppercase text-black">WHO IS PLAYING TODAY?</h2>
+                  <span className="px-2.5 py-0.5 bg-[#CCFF00] text-black border-2 border-black text-xs font-mono font-black">
+                    {attendingCount} / {players.length} PLAYING
                   </span>
                 </div>
-                <p className="text-xs text-zinc-400">
-                  Slide or tap player cards to toggle attendance for match generator
+                <p className="text-xs font-semibold text-zinc-600">
+                  Slide or click player cards to toggle attendance for match generator
                 </p>
               </div>
             </div>
@@ -179,15 +179,15 @@ export const PlayerManager: React.FC<PlayerManagerProps> = ({
             <div className="flex items-center gap-2 flex-wrap">
               <button
                 onClick={() => onToggleAllAttendance(true)}
-                className="px-3 py-1.5 rounded-xl bg-emerald-600/30 hover:bg-emerald-600/50 text-emerald-300 font-semibold text-xs border border-emerald-500/30 transition-colors"
+                className="px-3 py-1.5 bg-[#CCFF00] text-black font-black text-xs border-2 border-black neo-shadow-sm hover:bg-[#00F0FF] cursor-pointer uppercase"
               >
-                All Present ({players.length})
+                ALL PRESENT ({players.length})
               </button>
               <button
                 onClick={() => onToggleAllAttendance(false)}
-                className="px-3 py-1.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-400 font-semibold text-xs border border-zinc-700 transition-colors"
+                className="px-3 py-1.5 bg-zinc-200 text-black font-black text-xs border-2 border-black hover:bg-zinc-300 cursor-pointer uppercase"
               >
-                Clear All
+                CLEAR ALL
               </button>
             </div>
           </div>
@@ -200,12 +200,12 @@ export const PlayerManager: React.FC<PlayerManagerProps> = ({
               max={players.length}
               value={attendingCount}
               onChange={(e) => onSetAttendanceCount(parseInt(e.target.value, 10))}
-              className="w-full accent-emerald-500 h-2 bg-zinc-800 rounded-lg cursor-pointer"
+              className="w-full accent-black h-3 bg-zinc-200 border-2 border-black cursor-pointer"
             />
-            <div className="flex justify-between text-[11px] text-zinc-500 font-mono">
-              <span>0 Players</span>
-              <span>{Math.floor(players.length / 2)} Half Squad</span>
-              <span>{players.length} Full Squad</span>
+            <div className="flex justify-between text-[11px] font-mono font-black text-black">
+              <span>0 PLAYERS</span>
+              <span>{Math.floor(players.length / 2)} HALF SQUAD</span>
+              <span>{players.length} FULL SQUAD</span>
             </div>
           </div>
         </div>
@@ -215,49 +215,49 @@ export const PlayerManager: React.FC<PlayerManagerProps> = ({
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         {/* Search Field */}
         <div className="relative flex-1 max-w-md">
-          <Search className="w-4 h-4 absolute left-3.5 top-3 text-zinc-500" />
+          <Search className="w-4 h-4 absolute left-3.5 top-3.5 text-black stroke-[2.5]" />
           <input
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Search players by name..."
-            className="w-full pl-10 pr-4 py-2 rounded-2xl bg-zinc-900 border border-zinc-800 focus:border-emerald-500 focus:outline-none text-white text-xs placeholder-zinc-500 transition-colors"
+            className="w-full pl-10 pr-4 py-2.5 bg-white border-3 border-black neo-shadow-sm focus:bg-[#00F0FF]/10 text-black text-xs font-bold placeholder-zinc-500 focus:outline-none"
           />
         </div>
 
         {/* Filters */}
         <div className="flex items-center gap-3 overflow-x-auto no-scrollbar pb-1">
           {/* Attendance Filter */}
-          <div className="flex items-center bg-zinc-900 border border-zinc-800 p-1 rounded-2xl">
+          <div className="flex items-center bg-white border-3 border-black p-1 neo-shadow-sm">
             <button
               onClick={() => setAttendanceFilter('ALL')}
-              className={`px-3 py-1 rounded-xl text-xs font-semibold transition-all ${
+              className={`px-3 py-1 text-xs font-black uppercase transition-all border border-black ${
                 attendanceFilter === 'ALL'
-                  ? 'bg-zinc-800 text-white'
-                  : 'text-zinc-400 hover:text-white'
+                  ? 'bg-black text-white'
+                  : 'bg-white text-black hover:bg-zinc-100'
               }`}
             >
-              All
+              ALL
             </button>
             <button
               onClick={() => setAttendanceFilter('ATTENDING')}
-              className={`px-3 py-1 rounded-xl text-xs font-semibold transition-all ${
+              className={`px-3 py-1 text-xs font-black uppercase transition-all border border-black ${
                 attendanceFilter === 'ATTENDING'
-                  ? 'bg-emerald-600 text-white'
-                  : 'text-zinc-400 hover:text-emerald-400'
+                  ? 'bg-[#CCFF00] text-black'
+                  : 'bg-white text-black hover:bg-zinc-100'
               }`}
             >
-              Playing ({attendingCount})
+              PLAYING ({attendingCount})
             </button>
             <button
               onClick={() => setAttendanceFilter('ABSENT')}
-              className={`px-3 py-1 rounded-xl text-xs font-semibold transition-all ${
+              className={`px-3 py-1 text-xs font-black uppercase transition-all border border-black ${
                 attendanceFilter === 'ABSENT'
-                  ? 'bg-red-950 text-red-300'
-                  : 'text-zinc-400 hover:text-red-400'
+                  ? 'bg-[#FF5F56] text-black'
+                  : 'bg-white text-black hover:bg-zinc-100'
               }`}
             >
-              Out ({players.length - attendingCount})
+              OUT ({players.length - attendingCount})
             </button>
           </div>
 
@@ -267,13 +267,13 @@ export const PlayerManager: React.FC<PlayerManagerProps> = ({
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-2.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
+                className={`px-2.5 py-1.5 text-xs font-black uppercase whitespace-nowrap transition-all border-2 border-black ${
                   selectedCategory === cat
-                    ? 'bg-emerald-600 text-white shadow-sm'
-                    : 'bg-zinc-900 text-zinc-400 hover:text-zinc-200 border border-zinc-800'
+                    ? 'bg-[#00F0FF] text-black neo-shadow-sm'
+                    : 'bg-white text-black hover:bg-zinc-100'
                 }`}
               >
-                {cat === 'ALL' ? 'All Positions' : cat}
+                {cat === 'ALL' ? 'ALL POSITIONS' : cat}
               </button>
             ))}
           </div>
@@ -289,37 +289,33 @@ export const PlayerManager: React.FC<PlayerManagerProps> = ({
             return (
               <div
                 key={player.id}
-                className={`group relative border rounded-2xl p-4 transition-all shadow-md flex items-center justify-between gap-3 ${
+                className={`group relative border-3 border-black p-4 flex items-center justify-between gap-3 font-['Space_Grotesk',sans-serif] transition-all ${
                   isAttending
-                    ? 'bg-zinc-900/90 hover:bg-zinc-900 border-zinc-800 hover:border-emerald-500/50'
-                    : 'bg-zinc-950/60 opacity-60 border-zinc-900/80 hover:opacity-90'
+                    ? 'bg-white text-black neo-shadow hover:translate-x-[-2px] hover:translate-y-[-2px]'
+                    : 'bg-zinc-200 text-zinc-600 opacity-70 border-zinc-500'
                 }`}
               >
                 {/* Left Shirt Icon & Info */}
                 <div className="flex items-center gap-3 min-w-0">
-                  <div className="relative w-10 h-10 rounded-xl bg-zinc-800 border border-zinc-700 flex items-center justify-center text-emerald-400 font-bold text-xs shrink-0 group-hover:border-emerald-500 transition-colors">
+                  <div className="relative w-10 h-10 bg-[#00F0FF] border-2 border-black flex items-center justify-center text-black font-black text-xs shrink-0 neo-shadow-sm">
                     {player.kitNumber ? (
                       <span>#{player.kitNumber}</span>
                     ) : (
-                      <Shirt className="w-5 h-5 text-zinc-500 group-hover:text-emerald-400 transition-colors" />
+                      <Shirt className="w-5 h-5 text-black stroke-[2.5]" />
                     )}
                   </div>
 
                   <div className="min-w-0 space-y-1">
-                    <h3 className="text-sm font-bold text-white truncate group-hover:text-emerald-300 transition-colors">
+                    <h3 className="text-sm font-black text-black truncate uppercase">
                       {player.name}
                     </h3>
 
                     <div className="flex flex-wrap gap-1">
                       {player.preferredPositions.map((posKey) => {
-                        const posInfo = POSITIONS.find((p) => p.key === posKey);
-                        const badgeClass = posInfo
-                          ? getCategoryBadgeClass(posInfo.category)
-                          : 'bg-zinc-800 text-zinc-300';
                         return (
                           <span
                             key={posKey}
-                            className={`px-2 py-0.5 rounded-md text-[10px] font-mono font-bold ${badgeClass}`}
+                            className="px-1.5 py-0.2 bg-black text-white text-[10px] font-mono font-black border border-black"
                           >
                             {posKey}
                           </span>
@@ -333,40 +329,40 @@ export const PlayerManager: React.FC<PlayerManagerProps> = ({
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => onToggleAttendance(player.id)}
-                    className={`flex items-center gap-1 px-2.5 py-1 rounded-xl text-[11px] font-extrabold transition-all ${
+                    className={`flex items-center gap-1 px-2.5 py-1 text-[11px] font-black uppercase border-2 border-black transition-all cursor-pointer ${
                       isAttending
-                        ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 hover:bg-emerald-500/30'
-                        : 'bg-zinc-800 text-zinc-500 border border-zinc-700 hover:bg-zinc-700 hover:text-zinc-300'
+                        ? 'bg-[#CCFF00] text-black neo-shadow-sm'
+                        : 'bg-zinc-300 text-black'
                     }`}
                     title={isAttending ? 'Click to mark Absent' : 'Click to mark Present'}
                   >
                     {isAttending ? (
                       <>
-                        <UserCheck className="w-3.5 h-3.5 text-emerald-400" />
-                        <span>Playing</span>
+                        <UserCheck className="w-3.5 h-3.5 stroke-[2.5]" />
+                        <span>PLAYING</span>
                       </>
                     ) : (
                       <>
-                        <UserX className="w-3.5 h-3.5 text-zinc-500" />
-                        <span>Out</span>
+                        <UserX className="w-3.5 h-3.5 stroke-[2.5]" />
+                        <span>OUT</span>
                       </>
                     )}
                   </button>
 
-                  <div className="flex items-center gap-1 opacity-80 group-hover:opacity-100 transition-opacity">
+                  <div className="flex items-center gap-1">
                     <button
                       onClick={() => onOpenEditModal(player)}
-                      className="p-1.5 rounded-lg hover:bg-zinc-800 text-zinc-400 hover:text-white transition-colors"
+                      className="p-1.5 bg-white hover:bg-[#00F0FF] text-black border border-black cursor-pointer"
                       title="Edit player"
                     >
-                      <Edit2 className="w-3.5 h-3.5" />
+                      <Edit2 className="w-3.5 h-3.5 stroke-[2.5]" />
                     </button>
                     <button
                       onClick={() => onDeletePlayer(player.id)}
-                      className="p-1.5 rounded-lg hover:bg-red-950 text-zinc-400 hover:text-red-400 transition-colors"
+                      className="p-1.5 bg-[#FF5F56] hover:bg-red-600 text-black border border-black cursor-pointer"
                       title="Delete player"
                     >
-                      <Trash2 className="w-3.5 h-3.5" />
+                      <Trash2 className="w-3.5 h-3.5 stroke-[2.5]" />
                     </button>
                   </div>
                 </div>
@@ -376,17 +372,17 @@ export const PlayerManager: React.FC<PlayerManagerProps> = ({
         </div>
       ) : (
         /* Empty State */
-        <div className="py-16 text-center space-y-6 bg-zinc-900/40 rounded-3xl border border-zinc-800/80 p-8">
-          <div className="w-16 h-16 mx-auto rounded-2xl bg-zinc-800/80 flex items-center justify-center text-zinc-500">
-            <Users className="w-8 h-8" />
+        <div className="py-16 text-center space-y-6 bg-white border-4 border-black neo-shadow p-8 text-black">
+          <div className="w-16 h-16 mx-auto bg-[#CCFF00] border-3 border-black neo-shadow flex items-center justify-center text-black">
+            <Users className="w-8 h-8 stroke-[2.5]" />
           </div>
 
           <div className="max-w-md mx-auto space-y-2">
-            <h3 className="text-lg font-bold text-white">No Players Found</h3>
-            <p className="text-xs text-zinc-400">
+            <h3 className="text-xl font-black uppercase text-black">NO PLAYERS FOUND</h3>
+            <p className="text-xs font-bold text-zinc-600">
               {searchTerm
                 ? 'No players match your search filter.'
-                : 'Add players manually or load one of our pre-configured demo rosters in 1 click.'}
+                : 'Add players manually or load sample roster.'}
             </p>
           </div>
 
@@ -394,22 +390,19 @@ export const PlayerManager: React.FC<PlayerManagerProps> = ({
             <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
               <button
                 onClick={onOpenAddModal}
-                className="flex items-center gap-2 px-5 py-2.5 rounded-2xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs shadow-lg shadow-emerald-950 transition-all"
+                className="flex items-center gap-2 px-5 py-2.5 bg-[#CCFF00] text-black font-black text-xs border-2 border-black neo-btn cursor-pointer uppercase"
               >
-                <UserPlus className="w-4 h-4" />
-                <span>Add First Player</span>
+                <UserPlus className="w-4 h-4 stroke-[2.5]" />
+                <span>+ ADD FIRST PLAYER</span>
               </button>
 
-              {SAMPLE_ROSTERS.map((sample, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => onLoadSample(idx)}
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-2xl bg-zinc-800 hover:bg-zinc-700 text-emerald-300 font-medium text-xs border border-zinc-700 transition-colors"
-                >
-                  <ListPlus className="w-4 h-4" />
-                  <span>Load {sample.name}</span>
-                </button>
-              ))}
+              <button
+                onClick={() => onLoadSample(0)}
+                className="flex items-center gap-2 px-4 py-2.5 bg-[#00F0FF] text-black font-black text-xs border-2 border-black neo-shadow-sm hover:bg-[#CCFF00] cursor-pointer uppercase"
+              >
+                <ListPlus className="w-4 h-4 stroke-[2.5]" />
+                <span>LOAD CUSTOM SQUAD</span>
+              </button>
             </div>
           )}
         </div>
@@ -420,10 +413,10 @@ export const PlayerManager: React.FC<PlayerManagerProps> = ({
         <div className="sticky bottom-6 flex justify-center pt-4 pointer-events-none">
           <button
             onClick={onGenerate}
-            className="pointer-events-auto flex items-center gap-2.5 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 text-white font-bold text-sm shadow-2xl shadow-emerald-950 hover:scale-[1.03] active:scale-[0.98] transition-all border border-emerald-400/30"
+            className="pointer-events-auto flex items-center gap-2.5 px-6 py-3.5 bg-[#CCFF00] text-black font-black text-sm uppercase tracking-wider border-3 border-black neo-btn cursor-pointer shadow-2xl"
           >
-            <Sparkles className="w-5 h-5 animate-pulse" />
-            <span>Generate Teams from {players.length} Players</span>
+            <Sparkles className="w-5 h-5 fill-black" />
+            <span>GENERATE TEAMS ({attendingCount} PLAYERS)</span>
           </button>
         </div>
       )}

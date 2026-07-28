@@ -37,44 +37,44 @@ export const ShareModal: React.FC<ShareModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-fadeIn">
-      <div className="relative w-full max-w-xl bg-zinc-900 border border-zinc-800 rounded-3xl shadow-2xl overflow-hidden text-white space-y-0">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 font-['Space_Grotesk',sans-serif]">
+      <div className="relative w-full max-w-xl bg-white border-4 border-black shadow-[8px_8px_0px_0px_#000000] p-0 text-black overflow-hidden">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-zinc-800/80 bg-zinc-950/50">
+        <div className="flex items-center justify-between p-5 bg-black text-white border-b-4 border-black">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center border border-emerald-500/20">
-              <Share2 className="w-5 h-5" />
+            <div className="w-10 h-10 bg-[#00F0FF] text-black border-2 border-black flex items-center justify-center">
+              <Share2 className="w-5 h-5 stroke-[2.5]" />
             </div>
             <div>
-              <h2 className="text-lg font-bold text-white">Share Match Lineups</h2>
-              <p className="text-xs text-zinc-400">
-                Copy formatted squad list directly to WhatsApp or download pitch image
+              <h2 className="text-lg font-black uppercase text-white tracking-wide">SHARE MATCH LINEUPS</h2>
+              <p className="text-xs font-mono text-[#00F0FF]">
+                WHATSAPP READY FORMAT
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-2 rounded-xl text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors"
+            className="p-1.5 bg-[#FF5F56] text-black border-2 border-black hover:bg-red-600 transition-colors cursor-pointer"
           >
-            <X className="w-5 h-5" />
+            <X className="w-5 h-5 stroke-[2.5]" />
           </button>
         </div>
 
         {/* Content */}
-        <div className="p-6 space-y-5">
+        <div className="p-6 space-y-5 bg-white">
           {/* WhatsApp Preview & Copy Button */}
           <div className="space-y-2">
             <div className="flex items-center justify-between">
-              <label className="text-xs font-bold text-emerald-400 flex items-center gap-1.5">
-                <MessageSquare className="w-4 h-4" />
-                <span>WhatsApp Formatted Text</span>
+              <label className="text-xs font-black text-black uppercase flex items-center gap-1.5">
+                <MessageSquare className="w-4 h-4 stroke-[2.5]" />
+                <span>WHATSAPP FORMATTED TEXT</span>
               </label>
               <button
                 onClick={handleCopyWA}
-                className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs transition-colors"
+                className="flex items-center gap-1.5 px-3 py-1.5 bg-[#CCFF00] hover:bg-[#00F0FF] text-black font-black text-xs border-2 border-black neo-btn transition-colors cursor-pointer uppercase"
               >
-                {copiedWA ? <Check className="w-3.5 h-3.5" /> : <Copy className="w-3.5 h-3.5" />}
-                <span>{copiedWA ? 'Copied!' : 'Copy for WhatsApp'}</span>
+                {copiedWA ? <Check className="w-3.5 h-3.5 stroke-[2.5]" /> : <Copy className="w-3.5 h-3.5 stroke-[2.5]" />}
+                <span>{copiedWA ? 'COPIED!' : 'COPY WHATSAPP'}</span>
               </button>
             </div>
 
@@ -82,7 +82,7 @@ export const ShareModal: React.FC<ShareModalProps> = ({
               readOnly
               rows={6}
               value={waText}
-              className="w-full p-3 rounded-xl bg-zinc-950 border border-zinc-800 text-zinc-300 font-mono text-xs focus:outline-none"
+              className="w-full p-3 bg-zinc-100 border-3 border-black text-black font-mono font-bold text-xs focus:outline-none"
             />
           </div>
 
@@ -93,10 +93,10 @@ export const ShareModal: React.FC<ShareModalProps> = ({
                 onExportPNG();
                 onClose();
               }}
-              className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-2xl bg-zinc-800 hover:bg-zinc-700 text-white font-bold text-xs border border-zinc-700 transition-colors"
+              className="w-full flex items-center justify-center gap-2 px-5 py-3 bg-[#00F0FF] hover:bg-[#CCFF00] text-black font-black text-xs uppercase border-2 border-black neo-shadow-sm transition-colors cursor-pointer"
             >
-              <Download className="w-4 h-4 text-emerald-400" />
-              <span>Download Pitch Image (PNG)</span>
+              <Download className="w-4 h-4 stroke-[2.5]" />
+              <span>DOWNLOAD PITCH IMAGE (PNG)</span>
             </button>
           </div>
         </div>
