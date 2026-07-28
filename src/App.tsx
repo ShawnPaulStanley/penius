@@ -180,19 +180,6 @@ export default function App() {
     }));
 
     setPlayers(loaded);
-
-    // Auto switch to appropriate formation for sample count
-    if (sample.count === 10) {
-      const f = FORMATIONS.find((f) => f.id === '5v5-2-2');
-      if (f) setSelectedFormation(f);
-    } else if (sample.count === 14) {
-      const f = FORMATIONS.find((f) => f.id === '7v7-2-3-1');
-      if (f) setSelectedFormation(f);
-    } else if (sample.count === 17) {
-      const f = FORMATIONS.find((f) => f.id === '8v8-3-3-1') || FORMATIONS.find((f) => f.id === '7v7-2-3-1');
-      if (f) setSelectedFormation(f);
-    }
-
     setActiveTab('players');
   };
 

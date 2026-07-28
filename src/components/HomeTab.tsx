@@ -124,7 +124,7 @@ export const HomeTab: React.FC<HomeTabProps> = ({
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 max-w-lg gap-4">
           {SAMPLE_ROSTERS.map((sample, idx) => (
             <div
               key={idx}
@@ -185,9 +185,9 @@ export const HomeTab: React.FC<HomeTabProps> = ({
             <div className="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center font-bold text-sm border border-emerald-500/20 group-hover:bg-emerald-500 group-hover:text-white transition-colors">
               2
             </div>
-            <h3 className="font-bold text-white text-sm">Pick Formation</h3>
+            <h3 className="font-bold text-white text-sm">Full Custom Layout</h3>
             <p className="text-xs text-zinc-400 leading-relaxed">
-              Choose your tactical lineup (5v5, 7v7, 11v11: 4-3-3, 4-4-2, 3-2-1, etc.).
+              Every attending player is automatically placed on the pitch in clean custom tactical positions.
             </p>
           </div>
 

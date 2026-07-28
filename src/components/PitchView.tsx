@@ -258,8 +258,8 @@ export const PitchView: React.FC<PitchViewProps> = ({
                 x: ap.x ?? formation.slots.find((s) => s.role === ap.assignedPosition)?.x ?? 50,
                 y: ap.y ?? formation.slots.find((s) => s.role === ap.assignedPosition)?.y ?? 50,
               };
-              // Mirror Y for top team (100 - Y)
-              const topY = 100 - slot.y;
+              // Top team (Team B) top-down position: slot.y percentage from top goal line
+              const topY = slot.y;
               const isSelected =
                 selectedPlayerForSwap?.teamId === 'teamB' &&
                 selectedPlayerForSwap?.playerId === ap.player.id;

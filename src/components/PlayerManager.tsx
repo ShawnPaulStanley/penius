@@ -93,10 +93,10 @@ export const PlayerManager: React.FC<PlayerManagerProps> = ({
           <button
             onClick={() => onLoadSample(0)}
             className="flex items-center gap-2 px-3.5 py-2.5 rounded-2xl bg-zinc-800 hover:bg-zinc-700 text-emerald-300 font-semibold text-xs border border-emerald-500/30 transition-colors"
-            title="Load or Reset to 17 Custom Squad"
+            title="Load or Reset to 18 Custom Squad"
           >
             <Sparkles className="w-4 h-4 text-emerald-400" />
-            <span>Load 17 Squad</span>
+            <span>Load Custom Squad</span>
           </button>
 
           <button
@@ -183,27 +183,11 @@ export const PlayerManager: React.FC<PlayerManagerProps> = ({
               >
                 All Present ({players.length})
               </button>
-              {players.length >= 14 && (
-                <button
-                  onClick={() => onSetAttendanceCount(14)}
-                  className="px-3 py-1.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-semibold text-xs border border-zinc-700 transition-colors"
-                >
-                  Quick 14
-                </button>
-              )}
-              {players.length >= 10 && (
-                <button
-                  onClick={() => onSetAttendanceCount(10)}
-                  className="px-3 py-1.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-semibold text-xs border border-zinc-700 transition-colors"
-                >
-                  Quick 10
-                </button>
-              )}
               <button
                 onClick={() => onToggleAllAttendance(false)}
                 className="px-3 py-1.5 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-400 font-semibold text-xs border border-zinc-700 transition-colors"
               >
-                Clear
+                Clear All
               </button>
             </div>
           </div>

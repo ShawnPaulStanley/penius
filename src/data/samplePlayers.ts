@@ -28,18 +28,6 @@ export const SAMPLE_ROSTERS: { name: string; description: string; count: number;
     count: 18,
     players: CUSTOM_18_PLAYERS,
   },
-  {
-    name: '7v7 Match Lineup (14 Players)',
-    description: '14 players selected from your squad for standard 7-a-side matches.',
-    count: 14,
-    players: CUSTOM_18_PLAYERS.slice(0, 14),
-  },
-  {
-    name: '5v5 Futsal Squad (10 Players)',
-    description: '10 players selected from your squad for 5-a-side mini matches.',
-    count: 10,
-    players: CUSTOM_18_PLAYERS.slice(0, 10),
-  },
 ];
 
 
