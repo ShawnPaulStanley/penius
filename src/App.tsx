@@ -34,12 +34,38 @@ export default function App() {
   const [activeTab, setActiveTab] = useState<ActiveTab>('home');
   const [players, setPlayers] = useState<Player[]>(() => {
     const stored = loadStoredPlayers();
-    // If stored players contain pro football names from old cache, reset or return stored
+    // If stored players exist and are not old pros, migrate updated names/positions and ensure Joshua is present
     if (stored.length > 0) {
       const hasOldPros = stored.some(p => ['Neuer', 'Mbappe', 'Haaland', 'Courtois', 'Ramos'].some(name => p.name.includes(name)));
-      if (!hasOldPros) return stored;
+      if (!hasOldPros) {
+        const updated = stored.map(p => {
+          const lower = p.name.toLowerCase();
+          if (lower.includes('samduarai') || lower === 'samduarai ruban' || lower === 'samduarai ruben') {
+            return { ...p, name: 'Sam' };
+          }
+          if (lower === 'issac pradeep') {
+            return { ...p, name: 'Issac' };
+          }
+          if (lower === 'shawn') {
+            return { ...p, preferredPositions: ['CM', 'CAM', 'CDM'] };
+          }
+          return p;
+        });
+
+        if (!updated.some(p => p.name.toLowerCase() === 'joshua')) {
+          updated.push({
+            id: `init_joshua_${Date.now()}`,
+            name: 'Joshua',
+            preferredPositions: ['ST'],
+            kitNumber: 19,
+            isAttending: true,
+            createdAt: Date.now(),
+          });
+        }
+        return updated;
+      }
     }
-    // Default load 17-player custom squad
+    // Default load 19-player custom squad
     return SAMPLE_ROSTERS[0].players.map((p, idx) => ({
       ...p,
       id: `init_${idx}_${Date.now()}`,

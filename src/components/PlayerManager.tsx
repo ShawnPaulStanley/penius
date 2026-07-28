@@ -296,7 +296,7 @@ export const PlayerManager: React.FC<PlayerManagerProps> = ({
                 }`}
               >
                 {/* Left Shirt Icon & Info */}
-                <div className="flex items-center gap-3 min-w-0">
+                <div className="flex items-center gap-3 min-w-0 flex-1">
                   <div className="relative w-10 h-10 bg-[#00F0FF] border-2 border-black flex items-center justify-center text-black font-black text-xs shrink-0 neo-shadow-sm">
                     {player.kitNumber ? (
                       <span>#{player.kitNumber}</span>
@@ -305,8 +305,8 @@ export const PlayerManager: React.FC<PlayerManagerProps> = ({
                     )}
                   </div>
 
-                  <div className="min-w-0 space-y-1">
-                    <h3 className="text-sm font-black text-black truncate uppercase">
+                  <div className="min-w-0 flex-1 space-y-1">
+                    <h3 className="text-sm font-black text-black break-words leading-tight uppercase">
                       {player.name}
                     </h3>
 
